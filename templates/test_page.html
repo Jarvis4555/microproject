@@ -10,7 +10,7 @@
     <link rel = "stylesheet" href = "styles.css">
 </head>
 <body>
-    <header class="jumbotron bg-primary  text-white" style="background-image: url(https://images.unsplash.com/photo-1460355976672-71c3f0a4bdac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80); background-size: 4%;"  >
+    <header class="jumbotron bg-primary  text-white" style="background-image: url(https://cdn.hipwallpaper.com/i/35/29/j4t0DI.jpg); background-size: 4%;"  >
         <div class="container">
             <div class="row row-header">
                 <div class="col-12 col-sm-5">
@@ -55,14 +55,25 @@
                      <div class="form-group row">
                          <label for="email" class="col-md-2 col-form-label">Email</label>
                          <div class="col-md-8">
-                             <input type="email" class="form-control border border-success" id="email" name="email" placeholder="abc@gmail.com"><br>
+                             <!-- <input type="email" class="form-control border border-success" id="email" name="email" placeholder="abc@gmail.com"><br> -->
+                             <input class="form-control" type="text" name="email" id="email" placeholder="example@gmail.com"
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                   oninvalid="setCustomValidity('Please enter a valid email id')"
+                                   oninput="setCustomValidity('')"
+                                   required><br>
                          </div>
                      </div>
                      <div class="form-group row">
                         <label for="phoneNumber" class="col-md-2 col-form-label">Mobile Number</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control border border-success" id="phoneNumber" name="phoneNumber" placeholder="xxxxx-xxxxx"><br>
+                            <!-- <input type="text" class="form-control border border-success" id="phoneNumber" name="phoneNumber" placeholder="xxxxx-xxxxx"><br> -->
+                            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber"  
+                                   pattern="[6789][0-9]{9}"
+                                   oninvalid="setCustomValidity('Please enter a valid mobile number.')"
+                                   oninput="setCustomValidity('')"
+                                   required><br>
                         </div>
+                        
                     </div>
                      <div class = "form-group row">
                          <label for = "source_state" class = "col-md-2 col-form-label">State</label>
@@ -93,7 +104,12 @@
                     <div class="form-group row">
                         <label for="idcard" class="col-md-2  col-form-label">Aadhar Number</label>
                         <div class = "col-md-8">
-                            <input type="text" class="form-control border border-success" id="idcard" name="idcard" placeholder="xxxx-xxxx-xxxx"><br>
+                            <!-- <input type="text" class="form-control border border-success" id="idcard" name="idcard" placeholder="xxxxxxxxxxxx"><br> -->
+                            <input class="form-control" type="text" id="idcard" name="idcard" placeholder="12 digit UID"
+                                   pattern= "[0-9]{12}"
+                                   oninvalid="setCustomValidity('Aadhar number must be filled and contains exactly 12 digits')"
+                                   oninput="setCustomValidity('')"
+                                   required><br>
                         </div>
                      </div>
                      <div class="form-group row">

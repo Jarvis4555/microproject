@@ -2,8 +2,8 @@ import requests
 from flask import Flask, render_template, request
 from twilio.rest import Client
 
-account_sid = ''
-auth_token = ''
+account_sid = 'AC912a4f746847db91bfe7ace5577fcc9a'
+auth_token = 'a976d224f9e86f03bfca2e3b83fcbc60'
 client = Client(account_sid, auth_token)
 app = Flask(__name__, static_url_path='/static')
 
@@ -22,7 +22,8 @@ def login_registration_dtls():
     source_dt = request.form['source']
     destination_st = request.form['dest_state']
     destination_dt = request.form['destination']
-    phoneNumber = request.form['phoneNumber']
+    print("+91"+str(request.form['phoneNumber']))
+    phoneNumber ="+91"+str(request.form['phoneNumber'])
     id_proof = request.form['idcard']
     full_name = first_name + "." + last_name
     r = requests.get('https://api.covid19india.org/v4/data.json')
@@ -32,22 +33,21 @@ def login_registration_dtls():
     travel_pass = ((cnt / pop) * 100)
     if travel_pass < 30 and request.method == 'POST':
         status = 'CONFIRMED'
-        client.messages.create(to="+917794077510",
-                               from_="+17473224570",
+        client.messages.create(to=phoneNumber,
+                               from_="+13025664991",
                                body="Hello " + " " + full_name + " " + "Your Travel From " + " " + source_dt + " to " +
-                                    destination_dt + " " + "has been " + status + "" + " " +", E-PASS TELANGANA")
+                                    destination_dt + " " + "has been" + " " + status +"E-PASS TELANGANA")
         return render_template('user_registration_dtls.html', firstname=first_name, lastname=last_name,
                                status="confirmed", email=email_id)
     else:
         status = 'NOT CONFIRMED'
-        client.messages.create(to="+917794077510",
-                               from_="+17473224570",
+        client.messages.create(to=phoneNumber,
+                               from_="+13025664991",
                                body="Hello " + " " + full_name + " " + "Your Travel From " + " " +
-                                    source_dt + " to " + destination_dt + " " + "has been " + status + "" + " " +
-                                    ", E-PASS TELANGANA")
+                                    source_dt + " to " + destination_dt + " " + "has been " + " " + status  +"E-PASS TELANGANA")
         return render_template('user_registration_dtls.html', firstname=first_name, lastname=last_name,
                                status="confirmed", email=email_id)
 
 
 if __name__ == "__main__":
-    app.run(port=9001, debug=True)
+    app.run(port=5000, debug=True)
